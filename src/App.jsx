@@ -1,7 +1,18 @@
+function Header() {
+	return (
+		<>
+			<div id="header">
+				<div id="header-icon">PLACEHOLDER</div>
+				<div id="title">React Practice</div>
+			</div>
+		</>
+	);
+}
+
 export default function App() {
 	return (
 		<>
-			<h1>Hello World</h1>
+			<Header></Header>
 		</>
 	);
 }
