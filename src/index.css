@@ -12,6 +12,20 @@ body {
 	padding: 0;
 }
 
+a:visited {
+	text-decoration: none;
+	color: rgb(199, 181, 148);
+}
+
+a:link {
+	text-decoration: none;
+	color: wheat;
+}
+
+a:hover {
+	color: rgb(233, 201, 142);
+}
+
 #header {
 	background-color: #f25912;
 	width: 100%;
@@ -41,11 +55,11 @@ body {
 
 #main {
 	padding: 1rem;
+	margin: 1rem 0.5rem 0.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #5c3e94;
-	margin: 1rem;
 	flex-wrap: wrap;
 }
 
@@ -61,6 +75,26 @@ body {
 	width: 22%;
 	background-color: #211832;
 	margin: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.link-picture {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #412b6b;
+	height: 100px;
+}
+
+.link-wrap h1 {
+	display: flex;
+	justify-content: center;
+}
+
+.link-wrap p {
 	display: flex;
 	justify-content: center;
 }

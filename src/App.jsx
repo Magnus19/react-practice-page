@@ -10,8 +10,11 @@ function Header() {
 }
 
 const links = [
-	{ label: "Link 1", href: "/test" },
-	{ label: "Link 2", href: "/test2" },
+	{ label: "Link 1", href: "/test", description: "test 1" },
+	{ label: "Link 2", href: "/test2", description: "test 2" },
+	{ label: "Link 3", href: "/test3", description: "test 3" },
+	{ label: "Link 4", href: "/test4", description: "test 4" },
+	{ label: "Link 5", href: "/test5", description: "test 5" },
 ];
 
 function Body() {
@@ -21,7 +24,9 @@ function Body() {
 				<div id="body-header">Directories to each practice sessions</div>
 				{links.map((link) => (
 					<a className="link-wrap" href={link.label} key={link.href}>
-						<p>{link.label}</p>
+						<div className="link-picture">PLACEHOLDER</div>
+						<h1>{link.label}</h1>
+						<p>{link.description}</p>
 					</a>
 				))}
 			</div>
