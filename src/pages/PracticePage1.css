@@ -1,4 +1,44 @@
-.test {
-	color: red;
+#main {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+#body-header {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#body-description {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.practice-session-wrap {
 	padding: 1rem;
+	margin: 1rem;
+	width: 100%;
+	background-color: #211832;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.practice-session-wrap h1 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#count-val {
+	font-size: 2rem;
+}
+
+button {
+	padding: 1rem;
+	margin: 0.5rem;
 }
