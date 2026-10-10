@@ -1,21 +1,19 @@
+import { Link, Route, Routes } from "react-router-dom";
+import { links } from "./data/link.js";
+import PracticePage1 from "./pages/PracticePage1";
+
 function Header() {
 	return (
 		<>
 			<div id="header">
-				<div id="header-icon">PLACEHOLDER</div>
+				<Link to="/">
+					<div id="header-icon">PLACEHOLDER</div>
+				</Link>
 				<div id="title">React Practice</div>
 			</div>
 		</>
 	);
 }
-
-const links = [
-	{ label: "Link 1", href: "/test", description: "test 1" },
-	{ label: "Link 2", href: "/test2", description: "test 2" },
-	{ label: "Link 3", href: "/test3", description: "test 3" },
-	{ label: "Link 4", href: "/test4", description: "test 4" },
-	{ label: "Link 5", href: "/test5", description: "test 5" },
-];
 
 function Body() {
 	return (
@@ -23,11 +21,11 @@ function Body() {
 			<div id="main">
 				<div id="body-header">Directories to each practice sessions</div>
 				{links.map((link) => (
-					<a className="link-wrap" href={link.label} key={link.href}>
+					<Link key={link.id} className="link-wrap" to={`/practice/${link.id}`}>
 						<div className="link-picture">PLACEHOLDER</div>
 						<h1>{link.label}</h1>
 						<p>{link.description}</p>
-					</a>
+					</Link>
 				))}
 			</div>
 		</>
@@ -38,7 +36,10 @@ export default function App() {
 	return (
 		<>
 			<Header></Header>
-			<Body></Body>
+			<Routes>
+				<Route path="/" element={<Body />}></Route>
+				<Route path="/practice/:id" element={<PracticePage1 />}></Route>
+			</Routes>
 		</>
 	);
 }
