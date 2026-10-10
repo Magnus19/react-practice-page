@@ -37,12 +37,18 @@ a:hover {
 	justify-content: center;
 }
 
+#header a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: whitesmoke;
+}
+
 #header-icon {
 	display: flex;
 	align-items: center;
 	width: 10%;
 	justify-content: center;
-	font-size: 1.5em;
 }
 
 #title {

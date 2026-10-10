@@ -7,7 +7,7 @@ function Header() {
 		<>
 			<div id="header">
 				<Link to="/">
-					<div id="header-icon">PLACEHOLDER</div>
+					<div id="header-icon">Press to go back to home page</div>
 				</Link>
 				<div id="title">React Practice</div>
 			</div>
