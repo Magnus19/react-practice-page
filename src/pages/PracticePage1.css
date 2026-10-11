@@ -42,3 +42,35 @@ button {
 	padding: 1rem;
 	margin: 0.5rem;
 }
+
+#board {
+	display: flex;
+	width: 50%;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.grid {
+	width: 33%;
+	aspect-ratio: 1;
+	border: 1px solid black;
+	background-color: white;
+	cursor: pointer;
+	color: black;
+	container-type: inline-size;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.grid:hover {
+	background-color: aliceblue;
+}
+
+.grid-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: clamp(3rem, 50cqi, 8rem);
+	width: 100%;
+}

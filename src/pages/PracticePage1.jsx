@@ -39,6 +39,30 @@ function MyButton2({ count, click }) {
 	);
 }
 
+function TicTacToe() {
+	const [grid, setGrid] = useState(Array(9).fill(null));
+
+	const clickGrid = (index) => {
+		setGrid((currentBoard) =>
+			currentBoard.map((value, cellIndex) =>
+				cellIndex === index ? "X" : value,
+			),
+		);
+	};
+
+	return (
+		<div id="board">
+			{grid.map((value, index) => {
+				return (
+					<div className="grid" key={index} onClick={() => clickGrid(index)}>
+						<div className="grid-text">{value}</div>
+					</div>
+				);
+			})}
+		</div>
+	);
+}
+
 export default function PracticePage1() {
 	// For Practice Session #2
 	const [count, setCount] = useState(0);
@@ -84,19 +108,26 @@ const practiceSessions = [
 	{
 		id: "1",
 		title: "Button",
-		description: "Updating button value",
+		description: "Updating button value.",
 		component: "MyButton1",
 	},
 	{
 		id: "2",
 		title: "Two Buttons",
-		description: "Updating button value in shared components",
+		description: "Updating button value in shared components using props.",
 		component: "MyButton2",
 		usesSharedCount: true,
+	},
+	{
+		id: "3",
+		title: "Tic Tac Toe",
+		description: "It is tic tac toe, what more?",
+		component: "TicTacToe",
 	},
 ];
 
 const components = {
 	MyButton1,
 	MyButton2,
+	TicTacToe,
 };
