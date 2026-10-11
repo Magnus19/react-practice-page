@@ -54,6 +54,18 @@ button {
 	width: 100%;
 }
 
+.game {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.game-board {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
 .grid {
 	width: 33%;
 	aspect-ratio: 1;

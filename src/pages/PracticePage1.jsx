@@ -45,6 +45,55 @@ function MyButton2({ count, click }) {
 
 // Practice Session 3
 
+function Game() {
+	const [history, setHistory] = useState([Array(9).fill(null)]);
+	const [currentMove, setCurrentMove] = useState(0);
+	const xIsNext = currentMove % 2 == 0;
+	const currentSquares = history[currentMove];
+
+	const handlePlay = (nextSquares) => {
+		const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+		setHistory(nextHistory);
+		setCurrentMove(nextHistory.length - 1);
+	};
+
+	const jumpTo = (nextMove) => {
+		setCurrentMove(nextMove);
+	};
+
+	const moves = history.map((squares, move) => {
+		let description;
+		if (move > 0) {
+			description = "Go to Move #" + move;
+		} else {
+			description = "Go to game start";
+		}
+		return (
+			<li key={move}>
+				<button onClick={() => jumpTo(move)}>{description}</button>
+			</li>
+		);
+	});
+
+	return (
+		<>
+			<div className="game">
+				<div className="game-board">
+					<TicTacToe
+						xIsNext={xIsNext}
+						grid={currentSquares}
+						onPlay={handlePlay}
+					/>
+
+					<div className="game-info">
+						<ol>{moves}</ol>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+}
+
 function Grid({ grid, clickGrid }) {
 	return (
 		<>
@@ -59,10 +108,7 @@ function Grid({ grid, clickGrid }) {
 	);
 }
 
-function TicTacToe() {
-	const [xIsNext, setXIsNext] = useState(true);
-	const [grid, setGrid] = useState(Array(9).fill(null));
-
+function TicTacToe({ xIsNext, grid, onPlay }) {
 	const calculateWinner = (squares) => {
 		const lines = [
 			[0, 1, 2],
@@ -97,12 +143,9 @@ function TicTacToe() {
 
 	const clickGrid = (index) => {
 		if (grid[index] || calculateWinner(grid)) return;
-		setGrid((currentBoard) =>
-			currentBoard.map((value, cellIndex) =>
-				cellIndex === index ? (xIsNext ? "X" : "O") : value,
-			),
-		);
-		setXIsNext((current) => !current);
+		const nextSquares = grid.slice();
+		nextSquares[index] = xIsNext ? "X" : "O";
+		onPlay(nextSquares);
 	};
 
 	return (
@@ -172,12 +215,12 @@ const practiceSessions = [
 		id: "3",
 		title: "Tic Tac Toe",
 		description: "It is tic tac toe, what more?",
-		component: "TicTacToe",
+		component: "Game",
 	},
 ];
 
 const components = {
 	MyButton1,
 	MyButton2,
-	TicTacToe,
+	Game,
 };
