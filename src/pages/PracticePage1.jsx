@@ -1,14 +1,7 @@
 import "./PracticePage1.css";
 import { useState } from "react";
 
-function MyButton({ count, click }) {
-	return (
-		<>
-			<button onClick={click}>Press this button</button>
-			<div id="count-val">Clicked {count} times</div>
-		</>
-	);
-}
+// Practice Session 1
 
 function MyButton1() {
 	const [count, setCount] = useState(0);
@@ -30,6 +23,17 @@ function MyButton1() {
 	);
 }
 
+// Practice Session 2
+
+function MyButton({ count, click }) {
+	return (
+		<>
+			<button onClick={click}>Press this button</button>
+			<div id="count-val">Clicked {count} times</div>
+		</>
+	);
+}
+
 function MyButton2({ count, click }) {
 	return (
 		<>
@@ -38,6 +42,8 @@ function MyButton2({ count, click }) {
 		</>
 	);
 }
+
+// Practice Session 3
 
 function Grid({ grid, clickGrid }) {
 	return (
@@ -54,14 +60,17 @@ function Grid({ grid, clickGrid }) {
 }
 
 function TicTacToe() {
+	const [xIsNext, setXIsNext] = useState(true);
 	const [grid, setGrid] = useState(Array(9).fill(null));
 
 	const clickGrid = (index) => {
+		if (grid[index]) return;
 		setGrid((currentBoard) =>
 			currentBoard.map((value, cellIndex) =>
-				cellIndex === index ? "X" : value,
+				cellIndex === index ? (xIsNext ? "X" : "O") : value,
 			),
 		);
+		setXIsNext((current) => !current);
 	};
 
 	return (
