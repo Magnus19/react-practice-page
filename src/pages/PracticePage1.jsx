@@ -39,6 +39,20 @@ function MyButton2({ count, click }) {
 	);
 }
 
+function Grid({ grid, clickGrid }) {
+	return (
+		<>
+			{grid.map((value, index) => {
+				return (
+					<div className="grid" key={index} onClick={() => clickGrid(index)}>
+						<div className="grid-text">{value}</div>
+					</div>
+				);
+			})}
+		</>
+	);
+}
+
 function TicTacToe() {
 	const [grid, setGrid] = useState(Array(9).fill(null));
 
@@ -52,13 +66,7 @@ function TicTacToe() {
 
 	return (
 		<div id="board">
-			{grid.map((value, index) => {
-				return (
-					<div className="grid" key={index} onClick={() => clickGrid(index)}>
-						<div className="grid-text">{value}</div>
-					</div>
-				);
-			})}
+			<Grid grid={grid} clickGrid={clickGrid}></Grid>
 		</div>
 	);
 }
