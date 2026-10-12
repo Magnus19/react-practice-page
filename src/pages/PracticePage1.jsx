@@ -156,6 +156,63 @@ function TicTacToe({ xIsNext, grid, onPlay }) {
 	);
 }
 
+// Practice Session 4
+function ToDoList() {
+	const [task, setTask] = useState([]);
+	const [title, setTitle] = useState("");
+	const [desc, setDesc] = useState("");
+
+	const addTask = (event) => {
+		event.preventDefault();
+
+		if (!title.trim() || !desc.trim()) return;
+
+		const newTask = {
+			id: task.length,
+			title: title,
+			desc: desc,
+		};
+
+		console.log(newTask.id);
+
+		setTask((currentTasks) => [...currentTasks, newTask]);
+
+		setDesc("");
+		setTitle("");
+	};
+
+	return (
+		<>
+			<div id="todo-wrap">
+				<form id="todo-header" onSubmit={addTask}>
+					<input
+						placeholder="Put title here"
+						onChange={(event) => setTitle(event.target.value)}
+						value={title}
+					/>
+					<input
+						placeholder="Put description here"
+						value={desc}
+						onChange={(event) => setDesc(event.target.value)}
+					/>
+					<button id="add-task">Add a Task</button>
+				</form>
+
+				<div id="todo-body">
+					{task.map((task) => {
+						return (
+							<div className="task-wrap">
+								<div className="task-title">{task.title}</div>
+								<div className="task-desc">{task.desc}</div>
+							</div>
+						);
+					})}
+				</div>
+			</div>
+		</>
+	);
+}
+
 export default function PracticePage1() {
 	// For Practice Session #2
 	const [count, setCount] = useState(0);
@@ -217,10 +274,17 @@ const practiceSessions = [
 		description: "It is tic tac toe, what more?",
 		component: "Game",
 	},
+	{
+		id: "4",
+		title: "To-Do List",
+		description: "Simple CRUD functions.",
+		component: "ToDoList",
+	},
 ];
 
 const components = {
 	MyButton1,
 	MyButton2,
 	Game,
+	ToDoList,
 };
