@@ -168,9 +168,9 @@ function ToDoList() {
 		if (!title.trim() || !desc.trim()) return;
 
 		const newTask = {
-			id: task.length,
-			title: title,
-			desc: desc,
+			id: crypto.randomUUID(),
+			title: title.trim(),
+			desc: desc.trim(),
 		};
 
 		console.log(newTask.id);
@@ -179,6 +179,12 @@ function ToDoList() {
 
 		setDesc("");
 		setTitle("");
+	};
+
+	const delTask = (id) => {
+		setTask((task) => {
+			return task.filter((item) => item.id !== id);
+		});
 	};
 
 	return (
@@ -201,9 +207,13 @@ function ToDoList() {
 				<div id="todo-body">
 					{task.map((task) => {
 						return (
-							<div className="task-wrap">
+							<div className="task-wrap" key={task.id}>
 								<div className="task-title">{task.title}</div>
 								<div className="task-desc">{task.desc}</div>
+								<button className="del-btn" onClick={() => delTask(task.id)}>
+									Delete
+								</button>
+								<button className="edit-btn">Edit</button>
 							</div>
 						);
 					})}
