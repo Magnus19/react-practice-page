@@ -161,6 +161,9 @@ function ToDoList() {
 	const [task, setTask] = useState([]);
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
+	const [draftTitle, setDraftTitle] = useState("");
+	const [draftDesc, setDraftDesc] = useState("");
+	const [taskId, setTaskId] = useState(null);
 
 	const addTask = (event) => {
 		event.preventDefault();
@@ -187,6 +190,15 @@ function ToDoList() {
 		});
 	};
 
+	const editTask = (id) => {
+		const selectedTask = task.find((item) => item.id === id);
+		if (!selectedTask) return;
+
+		setDraftTitle(selectedTask.title);
+		setDraftDesc(selectedTask.desc);
+		setTaskId(id);
+	};
+
 	return (
 		<>
 			<div id="todo-wrap">
@@ -210,10 +222,13 @@ function ToDoList() {
 							<div className="task-wrap" key={task.id}>
 								<div className="task-title">{task.title}</div>
 								<div className="task-desc">{task.desc}</div>
+
 								<button className="del-btn" onClick={() => delTask(task.id)}>
 									Delete
 								</button>
-								<button className="edit-btn">Edit</button>
+								<button className="edit-btn" onClick={() => editTask(task.id)}>
+									Edit
+								</button>
 							</div>
 						);
 					})}
