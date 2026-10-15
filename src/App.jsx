@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { links } from "./data/link.js";
-import PracticePage1 from "./pages/PracticePage1";
+import PracticePage1 from "./pages/PracticePage1/PracticePage1.jsx";
 
 function Header() {
 	return (
